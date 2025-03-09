@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  title: Authentication APIs
+  description: APIs for user authentication and password management
+  version: 1.0.0
+servers:
+  - url: http://localhost:7003/api/v1
+paths:
+  /auth/login:
+    post:
+      summary: Login API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+  /auth/send-otp:
+    post:
+      summary: Send OTP API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        '200':
+          description: OTP sent successfully
+  /auth/verify-otp:
+    post:
+      summary: Verify OTP API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                otp:
+                  type: string
+      responses:
+        '200':
+          description: OTP verified successfully
+  /auth/forgot-password:
+    put:
+      summary: Forgot Password API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Password reset link sent successfully
+  /auth/reset-password:
+    put:
+      summary: Reset Password API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oldPassword:
+                  type: string
+                newPassword:
+                  type: string
+      responses:
+        '200':
+          description: Password reset successfully

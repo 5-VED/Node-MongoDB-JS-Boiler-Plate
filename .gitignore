@@ -1,0 +1,13 @@
+# Dependencies
+node_modules
+
+# Environment varibales
+.env
+
+# public
+upload/*
+!public/default/
+public
+
+*.lock
+package-lock.json

@@ -1,0 +1,203 @@
+2024-05-11T06:50:24.209Z [info]: Listening to port 7003
+2024-05-11T06:50:25.738Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:50:36.771Z [info]: Listening to port 7003
+2024-05-11T06:50:38.389Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:50:42.887Z [error]: error generating User is not defined
+2024-05-11T06:50:42.892Z [error]: POST /api/v1/auth/verify-otp 500 - 27.918 ms - message: -
+2024-05-11T06:51:15.121Z [info]: Listening to port 7003
+2024-05-11T06:51:16.891Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:51:17.306Z [error]: error generating
+2024-05-11T06:51:17.318Z [error]: POST /api/v1/auth/verify-otp 500 - 36.658 ms - message: -
+2024-05-11T06:51:30.970Z [error]: error generating
+2024-05-11T06:51:30.975Z [error]: POST /api/v1/auth/verify-otp 500 - 4.829 ms - message: -
+2024-05-11T06:51:33.777Z [info]: Listening to port 7003
+2024-05-11T06:51:35.303Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:51:36.479Z [error]: error generating
+2024-05-11T06:51:36.486Z [error]: POST /api/v1/auth/verify-otp 500 - 36.970 ms - message: -
+2024-05-11T06:51:50.247Z [info]: Listening to port 7003
+2024-05-11T06:51:53.309Z [info]: Listening to port 7003
+2024-05-11T06:51:54.980Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:51:58.084Z [error]: error generating User is not defined
+2024-05-11T06:51:58.092Z [error]: POST /api/v1/auth/verify-otp 500 - 28.587 ms - message: -
+2024-05-11T06:52:17.547Z [info]: Listening to port 7003
+2024-05-11T06:52:19.051Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:52:19.687Z [info]: Listening to port 7003
+2024-05-11T06:52:21.240Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:52:30.769Z [info]: Listening to port 7003
+2024-05-11T06:52:32.357Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:52:33.543Z [error]: error generating User is not defined
+2024-05-11T06:52:33.551Z [error]: POST /api/v1/auth/verify-otp 500 - 24.728 ms - message: -
+2024-05-11T06:53:12.445Z [info]: Listening to port 7003
+2024-05-11T06:53:14.006Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:53:20.589Z [info]: Listening to port 7003
+2024-05-11T06:53:22.091Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:53:27.840Z [error]: POST /api/v1/auth/verify-otp 400 - 52.931 ms - message: -
+2024-05-11T06:53:41.155Z [info]: POST /api/v1/auth/send-otp 200 - 3204.183 ms
+2024-05-11T06:53:50.150Z [error]: POST /api/v1/auth/verify-otp 400 - 11.076 ms - message: -
+2024-05-11T06:53:52.879Z [info]: POST /api/v1/auth/verify-otp 200 - 6.253 ms
+2024-05-11T06:54:10.589Z [info]: Listening to port 7003
+2024-05-11T06:54:12.205Z [info]: Listening to port 7003
+2024-05-11T06:54:13.771Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:54:14.542Z [info]: Listening to port 7003
+2024-05-11T06:54:16.444Z [info]: Listening to port 7003
+2024-05-11T06:54:17.785Z [info]: Listening to port 7003
+2024-05-11T06:54:18.384Z [info]: Listening to port 7003
+2024-05-11T06:54:20.410Z [info]: Listening to port 7003
+2024-05-11T06:54:21.991Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:54:24.986Z [info]: Listening to port 7003
+2024-05-11T06:54:26.656Z [info]: POST /api/v1/auth/verify-otp 200 - 57.577 ms
+2024-05-11T06:54:27.096Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:54:28.809Z [info]: POST /api/v1/auth/verify-otp 200 - 18.930 ms
+2024-05-11T06:54:47.064Z [info]: Listening to port 7003
+2024-05-11T06:54:48.659Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:55:36.273Z [error]: PUT /api/v1/auth/forgot-password 404 - 32.205 ms - message: -
+2024-05-11T06:56:04.483Z [error]: error generating email is not defined
+2024-05-11T06:56:04.485Z [error]: PUT /api/v1/auth/forgot-password 500 - 4.482 ms - message: -
+2024-05-11T06:56:37.094Z [info]: Listening to port 7003
+2024-05-11T06:56:39.058Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:56:42.376Z [info]: PUT /api/v1/auth/forgot-password 200 - 87.507 ms
+2024-05-11T06:57:24.507Z [error]: PUT /api/v1/auth/reset-password 401 - 1.420 ms - message: -
+2024-05-11T06:57:48.229Z [error]: PUT /api/v1/auth/reset-password 404 - 5.658 ms - message: -
+2024-05-11T06:58:13.613Z [error]: error generating req.user.isPasswordMatch is not a function
+2024-05-11T06:58:13.614Z [error]: PUT /api/v1/auth/reset-password 500 - 2.536 ms - message: -
+2024-05-11T06:58:36.485Z [info]: Listening to port 7003
+2024-05-11T06:58:38.033Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:58:48.073Z [info]: Listening to port 7003
+2024-05-11T06:58:49.558Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:05.485Z [info]: Listening to port 7003
+2024-05-11T06:59:07.029Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:09.283Z [info]: Listening to port 7003
+2024-05-11T06:59:10.831Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:13.029Z [info]: Listening to port 7003
+2024-05-11T06:59:14.095Z [info]: Listening to port 7003
+2024-05-11T06:59:15.653Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:17.318Z [info]: Listening to port 7003
+2024-05-11T06:59:18.862Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:19.999Z [info]: Listening to port 7003
+2024-05-11T06:59:21.576Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:24.159Z [info]: Listening to port 7003
+2024-05-11T06:59:25.684Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:30.835Z [info]: Listening to port 7003
+2024-05-11T06:59:32.363Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:34.817Z [info]: Listening to port 7003
+2024-05-11T06:59:36.386Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:45.453Z [info]: Listening to port 7003
+2024-05-11T06:59:47.052Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:49.042Z [info]: Listening to port 7003
+2024-05-11T06:59:50.633Z [info]: 📧 Connected to email server 📧
+2024-05-11T06:59:54.887Z [info]: Listening to port 7003
+2024-05-11T06:59:56.488Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:04.357Z [info]: Listening to port 7003
+2024-05-11T07:00:05.993Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:06.870Z [info]: Listening to port 7003
+2024-05-11T07:00:08.412Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:10.225Z [info]: Listening to port 7003
+2024-05-11T07:00:11.745Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:17.089Z [info]: Listening to port 7003
+2024-05-11T07:00:18.382Z [info]: Listening to port 7003
+2024-05-11T07:00:20.012Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:23.561Z [info]: Listening to port 7003
+2024-05-11T07:00:25.094Z [info]: Listening to port 7003
+2024-05-11T07:00:26.712Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:28.960Z [info]: Listening to port 7003
+2024-05-11T07:00:30.474Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:32.286Z [info]: Listening to port 7003
+2024-05-11T07:00:33.800Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:50.952Z [info]: Listening to port 7003
+2024-05-11T07:00:52.590Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:53.361Z [info]: Listening to port 7003
+2024-05-11T07:00:54.980Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:00:57.774Z [info]: Listening to port 7003
+2024-05-11T07:00:59.312Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:01:01.450Z [info]: Listening to port 7003
+2024-05-11T07:01:03.025Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:01:05.600Z [info]: Listening to port 7003
+2024-05-11T07:01:06.813Z [error]: error generating Illegal arguments: string, undefined
+2024-05-11T07:01:06.822Z [error]: PUT /api/v1/auth/reset-password 500 - 24.248 ms - message: -
+2024-05-11T07:01:07.238Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:01:27.829Z [info]: Listening to port 7003
+2024-05-11T07:01:33.115Z [info]: Listening to port 7003
+2024-05-11T07:01:34.673Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:01:39.761Z [info]: Listening to port 7003
+2024-05-11T07:01:41.320Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:01:45.645Z [info]: Listening to port 7003
+2024-05-11T07:01:47.204Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:01:48.896Z [info]: Listening to port 7003
+2024-05-11T07:01:50.722Z [info]: Listening to port 7003
+2024-05-11T07:01:52.636Z [info]: Listening to port 7003
+2024-05-11T07:01:54.179Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:01:59.022Z [info]: Listening to port 7003
+2024-05-11T07:02:00.602Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:02:19.477Z [info]: Listening to port 7003
+2024-05-11T07:02:21.026Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:02:24.295Z [info]: Listening to port 7003
+2024-05-11T07:02:25.637Z [error]: error generating Cannot read properties of null (reading 'password')
+2024-05-11T07:02:25.645Z [error]: PUT /api/v1/auth/reset-password 500 - 64.609 ms - message: -
+2024-05-11T07:02:26.003Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:02:43.594Z [info]: Listening to port 7003
+2024-05-11T07:02:45.773Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:02:46.861Z [error]: error generating Cannot read properties of null (reading 'password')
+2024-05-11T07:02:46.865Z [error]: PUT /api/v1/auth/reset-password 500 - 47.247 ms - message: -
+2024-05-11T07:02:55.605Z [info]: Listening to port 7003
+2024-05-11T07:02:56.923Z [error]: error generating Cannot read properties of null (reading 'password')
+2024-05-11T07:02:56.930Z [error]: PUT /api/v1/auth/reset-password 500 - 45.447 ms - message: -
+2024-05-11T07:02:57.211Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:03:05.310Z [info]: Listening to port 7003
+2024-05-11T07:03:06.905Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:03:06.913Z [error]: error generating Cannot read properties of null (reading 'password')
+2024-05-11T07:03:06.919Z [error]: PUT /api/v1/auth/reset-password 500 - 44.314 ms - message: -
+2024-05-11T07:03:10.594Z [info]: Listening to port 7003
+2024-05-11T07:03:12.131Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:03:14.997Z [error]: error generating Cannot read properties of null (reading 'password')
+2024-05-11T07:03:15.006Z [error]: PUT /api/v1/auth/reset-password 500 - 50.610 ms - message: -
+2024-05-11T07:03:21.023Z [info]: Listening to port 7003
+2024-05-11T07:03:22.558Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:03:23.550Z [info]: Listening to port 7003
+2024-05-11T07:03:25.143Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:03:25.901Z [info]: Listening to port 7003
+2024-05-11T07:03:28.049Z [info]: Listening to port 7003
+2024-05-11T07:03:29.786Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:03:47.168Z [info]: Listening to port 7003
+2024-05-11T07:03:48.726Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:04:41.913Z [info]: Listening to port 7003
+2024-05-11T07:04:43.514Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:04:44.872Z [info]: Listening to port 7003
+2024-05-11T07:04:46.554Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:04:46.779Z [error]: PUT /api/v1/auth/reset-password 400 - 69.399 ms - message: -
+2024-05-11T07:04:55.725Z [info]: PUT /api/v1/auth/reset-password 200 - 64.970 ms
+2024-05-11T07:05:28.962Z [info]: Listening to port 7003
+2024-05-11T07:05:30.642Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:06:19.550Z [info]: Listening to port 7003
+2024-05-11T07:06:20.633Z [info]: Listening to port 7003
+2024-05-11T07:06:21.771Z [info]: Listening to port 7003
+2024-05-11T07:06:23.396Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:06:49.103Z [info]: Listening to port 7003
+2024-05-11T07:06:50.665Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:07:56.368Z [info]: Listening to port 7003
+2024-05-11T07:07:57.933Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:07:58.987Z [info]: Listening to port 7003
+2024-05-11T07:08:01.051Z [info]: Listening to port 7003
+2024-05-11T07:08:02.612Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:08:04.902Z [info]: Listening to port 7003
+2024-05-11T07:08:06.425Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:08:09.450Z [info]: Listening to port 7003
+2024-05-11T07:08:11.359Z [info]: Listening to port 7003
+2024-05-11T07:08:12.945Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:08:30.434Z [info]: Listening to port 7003
+2024-05-11T07:08:32.194Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:08:35.301Z [info]: Listening to port 7003
+2024-05-11T07:08:37.026Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:08:41.155Z [info]: Listening to port 7003
+2024-05-11T07:08:42.704Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:08:43.361Z [info]: Listening to port 7003
+2024-05-11T07:08:44.997Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:08:47.996Z [info]: Listening to port 7003
+2024-05-11T07:08:49.661Z [info]: 📧 Connected to email server 📧
+2024-05-11T07:21:57.069Z [info]: Listening to port 7003
+2024-05-11T07:21:58.394Z [info]: Listening to port 7003
+2024-05-11T07:23:14.571Z [info]: Listening to port 7003
+2024-05-11T07:23:16.152Z [info]: 📧 Connected to email server 📧
+2024-05-11T08:53:56.489Z [info]: Listening to port 7003
+2024-05-11T08:53:58.122Z [info]: 📧 Connected to email server 📧
+2024-05-11T08:54:34.412Z [info]: Listening to port 7003
+2024-05-11T08:54:36.698Z [info]: 📧 Connected to email server 📧
