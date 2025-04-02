@@ -1,36 +1,77 @@
 const jwt = require("jsonwebtoken");
-const apiResponse = require('../utils/api.response');
-const messages = require("../json/message.json");
-const { UserModel } = require("../models");
+const apiResponse = require('../Utils/api.response');
+const messages = require("../Constants/message");
+const { UserModel } = require("../Models");
 
-// Required Config
-const JWT_SECRET = process.env.JWT_SECRET;
+const auth = ({ isTokenRequired = true, usersAllowed = [] }) => {
+	return async (req, res, next) => {
+		try {
+			let token = (req.header('x-auth-token') || req.header('Authorization'))?.replace(/Bearer +/g, '') 
 
-module.exports = async (req, res, next) => {
-    const token = req.header("x-auth-token");
+			if (isTokenRequired && !token) {				
+                return apiResponse.BAD_REQUEST({                    
+                    res,        
+                    message: messages.TOKEN_REQUIRED
+                  })				
+			}
 
-    // Check for token
-    if (!token) {
-        return apiResponse.UNAUTHORIZED({ res, message: messages.unauthorized })
-    }
+			if (!isTokenRequired && !token) return next();
 
-    try {
-        // Verify token
-        jwt.verify(token, JWT_SECRET, async function (err, decoded) {
-            if (err) {
-                return res.status(400).json({ success: false, message: err.message });
-            }
+			let decoded = jwt.decode(token);
+			logger.info(`[DECODED] [CONTENT: ${JSON.stringify(decoded)}]`);
 
-            const user = await UserModel.findOne({ _id: decoded.user_id })
-            if (!user) {
-                return apiResponse.UNAUTHORIZED({ res, message: messages.invalid_token })
-            }
-            req.user = user;
-            next();
-        });
+			if (!decoded?.id) {				
+                return apiResponse.UNAUTHORIZED({                    
+                    res,        
+                    message: messages.INVALID_TOKEN
+                  })								
+			}
 
-        // Add user from payload
-    } catch (e) {
-        return apiResponse.UNAUTHORIZED({ res, message: messages.unauthorized })
-    }
+			const user = await UserModel.findOne({
+				where: {
+					id: decoded.id,
+					isActive: true,
+				},
+				include: [{ model: RoleModel, as: 'roleData' }],
+				raw: true,
+				nest: true,
+			});
+
+			if (!user) {				
+                return apiResponse.UNAUTHORIZED({                    
+                    res,        
+                    message: messages.INVALID_TOKEN
+                  })												
+			}
+
+			req.user = {
+				...decoded,
+				// ...user,
+				id: user?.id,
+				role: user?.roleData?.role,
+				email: user?.email,
+			};
+
+			if (req?.user?.role === ROLE.ADMIN || usersAllowed.includes('*')) {
+				return next();
+			}
+
+			if (usersAllowed.includes(req?.user?.role)) return next();
+
+            return apiResponse.UNAUTHORIZED({                    
+                res,        
+                message: messages.UNAUTHORIZED
+              })											
+		} catch (error) {
+			logger.error(`[AUTH ERROR]: ${error.message}`);						
+            return apiResponse.INTERNAL_SERVER_ERROR({                    
+                res,        
+                message: message.INTERNAL_SERVER_ERROR,
+                data: error
+              })								
+		}
+	};
 };
+
+
+module.exports = auth;

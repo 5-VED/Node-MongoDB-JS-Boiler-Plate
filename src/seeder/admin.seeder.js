@@ -1,5 +1,5 @@
 const ROLES  = require('../json/roles.json');
-const { User, Role } = require('../models');
+const { User, Role } = require('../Models');
 const { adminData } = require('./seedData');
 
 /**

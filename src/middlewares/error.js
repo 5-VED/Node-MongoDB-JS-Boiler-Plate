@@ -1,5 +1,5 @@
-const apiResponse = require("../utils/api.response");
-const messages = require("../json/message.json");
+const apiResponse = require("../Utils/api.response");
+const messages = require("../Constants/message.js");
 const { MulterError } = require("multer");
 const { JsonWebTokenError, NotBeforeError, TokenExpiredError } = require("jsonwebtoken")
 

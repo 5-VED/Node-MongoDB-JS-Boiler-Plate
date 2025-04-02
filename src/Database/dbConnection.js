@@ -6,7 +6,7 @@ module.exports = connectDB = async () => {
             useNewUrlParser: true,
             autoIndex: true,
             useUnifiedTopology: true,
-        }); // Database connected.
+        });
         console.log('✅ Database Connected successfully...');
     } catch (error) {
         console.log('❌ Database Connections Error :', error);

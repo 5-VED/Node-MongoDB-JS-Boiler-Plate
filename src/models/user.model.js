@@ -18,11 +18,7 @@ const userSchema = mongoose.Schema(
       type: String,
       trim: true,
       lowercase: true,
-      validate(value) {
-        if (!validator.isEmail(value)) {
-          throw new Error("Invalid email");
-        }
-      },
+      
     },
     mobileNo: {
       type: String,
@@ -32,14 +28,7 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       trim: true,
-      minlength: 8,
-      validate(value) {
-        if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
-          throw new Error(
-            "Password must contain at least one letter and one number"
-          );
-        }
-      },
+      minlength: 8,     
     },
     roleId: {
       type: mongoose.Types.ObjectId,
@@ -95,9 +84,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-/**
- * @typedef User
- */
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

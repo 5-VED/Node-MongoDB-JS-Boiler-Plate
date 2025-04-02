@@ -1,10 +1,10 @@
-const { generateToken } = require("../utils/utils");
-const emailService = require("../services/email-sending");
+const { generateToken } = require("../Utils/utils");
+const emailService = require("../Services/email-sending");
 const bcrypt = require("bcryptjs");
-const message = require("../json/message.json");
-const emailTemplate = require("../templates/emailTemplate");
-const { UserModel, OtpModel } = require("../models");
-const apiResponse = require("../utils/api.response");
+const message = require("../Constants/message")
+const emailTemplate = require("../Templates/emailTemplate");
+const { UserModel, OtpModel } = require("../Models");
+const apiResponse = require("../Utils/api.response");
 const moment = require("moment");
 const logger = require("../config/logger");
 
@@ -19,24 +19,24 @@ module.exports = {
       let emailExist = await UserModel.findOne({
         email,
         deletedAt: null,
-      }).populate("roleId"); // Get user by email.
+      }).populate("roleId");
 
       if (!emailExist) {
         return apiResponse.NOT_FOUND({
           res,
-          message: message.email_not_register,
-        }); // If email doesn't exist, throw an error.
+          message: message.EMAIL_NOT_FOUND,
+        }); 
       }
 
       if (!(await emailExist.isPasswordMatch(password))) {
         return apiResponse.BAD_REQUEST({
           res,
-          message: message.invalid_password,
-        }); // If password doesn't match the user's password, throw an error.
+          message: message.INVALID_PASSWORD,
+        });
       }
       return apiResponse.OK({
         res,
-        message: message.login_successful,
+        message: message.USER_LOGIN_SUCCESSFULLY,
         data: {
           user: emailExist,
           tokens: await generateToken({ user_id: emailExist._id }), // Generate auth token.
@@ -46,7 +46,7 @@ module.exports = {
       logger.error("error generating", err);
       return apiResponse.CATCH_ERROR({
         res,
-        message: message.something_went_wrong,
+        message: message.INTERNAL_SERVER_ERROR,
       });
     }
   },
@@ -58,13 +58,13 @@ module.exports = {
       const emailExist = await UserModel.findOne({
         email,
         deletedAt: null,
-      }).populate("roleId"); // Get user by email.
+      }).populate("roleId"); 
 
       if (!emailExist) {
         return apiResponse.NOT_FOUND({
           res,
-          message: message.email_not_register,
-        }); // If email doesn't exist, throw an error.
+          message: message.EMAIL_NOT_FOUND,
+        }); 
       }
 
       const generateOtp = () =>
@@ -87,13 +87,13 @@ module.exports = {
 
       return apiResponse.OK({
         res,
-        message: message.otp_sent_email,
+        message: message.OTP_SENT,
       });
     } catch (err) {
       logger.error("error generating", err);
       return apiResponse.CATCH_ERROR({
         res,
-        message: message.something_went_wrong,
+        message: message.INTERNAL_SERVER_ERROR,
       });
     }
   },
@@ -110,34 +110,34 @@ module.exports = {
       if (!emailExist) {
         return apiResponse.NOT_FOUND({
           res,
-          message: message.email_not_register,
-        }); // If email doesn't exist, throw an error.
+          message: message.EMAIL_NOT_FOUND,
+        }); 
       }
 
       let otpExists = await OtpModel.findOne({ userId: emailExist._id });
       console.log(`---otpExists--`, otpExists);
 
       if (!otpExists) {
-        return apiResponse.NOT_FOUND({ res, message: message.otp_invalid }); // If email doesn't exist, throw an error.
+        return apiResponse.NOT_FOUND({ res, message: message.INVALID_OTP }); 
       }
 
       if (otpExists.otp !== otp) {
-        return apiResponse.BAD_REQUEST({ res, message: message.otp_invalid }); // If email doesn't exist, throw an error.
+        return apiResponse.BAD_REQUEST({ res, message: message.INVALID_OTP }); 
       }
 
       if (otpExists.expires <= new Date()) {
-        return apiResponse.BAD_REQUEST({ res, message: message.otp_expired }); // If email doesn't exist, throw an error.
+        return apiResponse.BAD_REQUEST({ res, message: message.OTP_EXPIRED }); 
       }
 
       return apiResponse.OK({
         res,
-        message: message.otp_verify_success,
+        message: message.OTP_VERIFIED,
       });
     } catch (err) {
       logger.error("error generating", err);
       return apiResponse.CATCH_ERROR({
         res,
-        message: message.something_went_wrong,
+        message: message.INTERNAL_SERVER_ERROR,
       });
     }
   },
@@ -149,13 +149,13 @@ module.exports = {
       const emailExist = await UserModel.findOne({
         email: reqBody.email,
         deletedAt: null,
-      }).populate("roleId"); // Get user by email.
+      }).populate("roleId");
 
       if (!emailExist) {
         return apiResponse.NOT_FOUND({
           res,
-          message: message.email_not_register,
-        }); // If email doesn't exist, throw an error.
+          message: message.EMAIL_NOT_FOUND,
+        });
       }
 
       let password = await bcrypt.hashSync(reqBody.password, 8);
@@ -164,17 +164,17 @@ module.exports = {
         { _id: emailExist._id, deletedAt: null },
         { $set: { password: password } },
         { new: true }
-      ); // Update user password by _id.
+      ); 
 
       return apiResponse.OK({
         res,
-        message: message.password_forgot,
+        message: message.PASSWORD_CHANGED,
       });
     } catch (err) {
       logger.error("error generating", err);
       return apiResponse.CATCH_ERROR({
         res,
-        message: message.something_went_wrong,
+        message: message.INTERNAL_SERVER_ERROR,
       });
     }
   },
@@ -188,27 +188,27 @@ module.exports = {
       if (!bcrypt.compareSync(reqBody.oldPassword, user.password)) {
         return apiResponse.BAD_REQUEST({
           res,
-          message: message.old_password_wrong,
+          message: message.WRONG_PASSWORD,
         });
       }
 
-      let password = await bcrypt.hashSync(reqBody.newPassword, 8);
+      let password = bcrypt.hashSync(reqBody.newPassword, 8);
 
       await UserModel.findOneAndUpdate(
         { _id: req.user._id._id, deletedAt: null },
         { $set: { password: password } },
         { new: true }
-      ); // Update user password by _id.
+      );
 
       return apiResponse.OK({
         res,
-        message: message.password_forgot,
+        message: message.PASSWORD_CHANGED,
       });
     } catch (err) {
       logger.error("error generating", err);
       return apiResponse.CATCH_ERROR({
         res,
-        message: message.something_went_wrong,
+        message: message.INTERNAL_SERVER_ERROR,
       });
     }
   },

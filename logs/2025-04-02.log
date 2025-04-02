@@ -1,0 +1,8 @@
+2025-04-02T10:06:33.551Z [warn]: Unable to connect to email server. Make sure you have configured the SMTP options in .env
+2025-04-02T10:06:33.591Z [info]: Listening to port 3000
+2025-04-02T10:06:45.674Z [info]: Listening to port 3000
+2025-04-02T10:06:45.677Z [warn]: Unable to connect to email server. Make sure you have configured the SMTP options in .env
+2025-04-02T10:07:05.664Z [info]: Listening to port 3000
+2025-04-02T10:07:05.668Z [warn]: Unable to connect to email server. Make sure you have configured the SMTP options in .env
+2025-04-02T10:07:54.076Z [warn]: Unable to connect to email server. Make sure you have configured the SMTP options in .env
+2025-04-02T10:07:54.090Z [info]: Listening to port 3000

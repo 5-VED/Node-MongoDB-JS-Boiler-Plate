@@ -1,13 +1,13 @@
 const express = require("express");
 require('dotenv').config()
 const logger = require('./config/logger');
-const connectDB = require('./db/dbConnection');
-const routes = require("./routes");
-const message = require("./json/message.json");
+const connectDB = require('./Database/dbConnection');
+const routes = require("./Routes");
+const message = require("./Constants/message.js");
 const cors = require("cors");
 const { default: helmet } = require("helmet");
 const morgan = require("./config/morgan");  
-const apiResponse = require("./utils/api.response");
+const apiResponse = require("./Utils/api.response");
 
 const app = express();
 
@@ -17,7 +17,7 @@ connectDB().then(() => {
     });
 }).catch((error) => {
     console.log(`---error--`, error);
-}); // Db connected.
+}); 
 app.use(express.json());
 
 app.options("*", cors());
@@ -30,6 +30,6 @@ app.use(morgan.errorHandler);
 app.use("/api/v1", routes);
 
 app.use((req, res, next) => {
-    return apiResponse.NOT_FOUND({ res, message: message.route_not_found })
+    return apiResponse.NOT_FOUND({ res, message: message.ROUTE_NOT_FOUND })
 });
 

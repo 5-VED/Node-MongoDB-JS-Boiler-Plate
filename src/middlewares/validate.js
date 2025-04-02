@@ -1,6 +1,6 @@
 const Joi = require("joi");
-const pick = require("../utils/pick");
-const apiResponse = require("../utils/api.response");
+const pick = require("../Utils/pick");
+const apiResponse = require("../Utils/api.response");
 
 const errors = {
   labels: true,
