@@ -1,4 +1,4 @@
-const connectDB = require('../db/dbConnection');
+const connectDB = require('../Database/dbConnection');
 require('dotenv').config()
 const adminSeeder = require('./admin.seeder');
 const roleSeeder = require('./role.seeder');

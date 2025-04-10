@@ -1,4 +1,4 @@
-const  ROLES  = require("../json/roles.json");
+const  ROLES  = require("../Constants/roles");
 
 module.exports = {
   roles: [

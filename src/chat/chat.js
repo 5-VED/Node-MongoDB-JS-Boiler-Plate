@@ -8,7 +8,7 @@ module.exports = async (io) => {
         let user;
         try {
 
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
             user = await DB.USER.findByIdAndUpdate(decoded._id, { socketId: socket.id }, { new: true })
 
         } catch (error) {

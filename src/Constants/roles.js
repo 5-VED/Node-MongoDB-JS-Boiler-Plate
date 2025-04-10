@@ -4,4 +4,6 @@ const roles = {
   Client: "Client"
 }
 
+module.exports = roles
+
 

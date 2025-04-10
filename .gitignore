@@ -11,3 +11,5 @@ public
 
 *.lock
 package-lock.json
+
+logs
