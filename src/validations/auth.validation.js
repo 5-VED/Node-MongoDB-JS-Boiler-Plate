@@ -11,6 +11,19 @@ const login = {
 };
 
 /**
+ * Login.
+ */
+const signup = {
+  body: Joi.object().keys({
+    firstName: Joi.string().trim().required(),
+    lastName: Joi.string().trim().required(),
+    email: Joi.string().trim().email().required(),
+    password: Joi.string().trim().required(),
+    mobileNo: Joi.string().trim().required(),
+  }),
+};
+
+/**
  * Send OTP.
  */
 const sendOtp = {
@@ -67,5 +80,6 @@ module.exports = {
   verifyOtp,
   forgotPassword,
   changePassword,
-  logout
+  logout,
+  signup
 };

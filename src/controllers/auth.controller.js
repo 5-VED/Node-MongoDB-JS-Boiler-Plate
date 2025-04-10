@@ -25,7 +25,7 @@ module.exports = {
         return apiResponse.NOT_FOUND({
           res,
           message: message.EMAIL_NOT_FOUND,
-        }); 
+        });
       }
 
       if (!(await emailExist.isPasswordMatch(password))) {
@@ -43,7 +43,37 @@ module.exports = {
         },
       });
     } catch (err) {
-      logger.error("error generating", err);      
+      logger.error("error generating", err);
+      return apiResponse.CATCH_ERROR({
+        res,
+        message: message.INTERNAL_SERVER_ERROR,
+      });
+    }
+  },
+
+  signupUser: async (req, res) => {
+    try {
+
+      const { firstName, lastName, email, password, mobileNo } = req.body
+
+      const emailExist = await UserModel.findOne({ email: email, isDeleted: false })
+      if (emailExist) {
+        return apiResponse.DUPLICATE_VALUE({
+          res,
+          message: message.USER_ALREADY_EXISTS
+        })
+      }
+
+      const user = await UserModel.create({ firstName, lastName, email, password, mobileNo })
+
+      return apiResponse.OK({
+        res,
+        message: message.USER_CREATED_SUCCESSFULLY,
+        data: user
+      })
+
+    } catch (error) {
+      logger.error("error generating", err);
       return apiResponse.CATCH_ERROR({
         res,
         message: message.INTERNAL_SERVER_ERROR,
@@ -58,13 +88,13 @@ module.exports = {
       const emailExist = await UserModel.findOne({
         email,
         deletedAt: null,
-      }).populate("roleId"); 
+      }).populate("roleId");
 
       if (!emailExist) {
         return apiResponse.NOT_FOUND({
           res,
           message: message.EMAIL_NOT_FOUND,
-        }); 
+        });
       }
 
       const generateOtp = () =>
@@ -111,22 +141,22 @@ module.exports = {
         return apiResponse.NOT_FOUND({
           res,
           message: message.EMAIL_NOT_FOUND,
-        }); 
+        });
       }
 
       let otpExists = await OtpModel.findOne({ userId: emailExist._id });
       console.log(`---otpExists--`, otpExists);
 
       if (!otpExists) {
-        return apiResponse.NOT_FOUND({ res, message: message.INVALID_OTP }); 
+        return apiResponse.NOT_FOUND({ res, message: message.INVALID_OTP });
       }
 
       if (otpExists.otp !== otp) {
-        return apiResponse.BAD_REQUEST({ res, message: message.INVALID_OTP }); 
+        return apiResponse.BAD_REQUEST({ res, message: message.INVALID_OTP });
       }
 
       if (otpExists.expires <= new Date()) {
-        return apiResponse.BAD_REQUEST({ res, message: message.OTP_EXPIRED }); 
+        return apiResponse.BAD_REQUEST({ res, message: message.OTP_EXPIRED });
       }
 
       return apiResponse.OK({
@@ -164,7 +194,7 @@ module.exports = {
         { _id: emailExist._id, deletedAt: null },
         { $set: { password: password } },
         { new: true }
-      ); 
+      );
 
       return apiResponse.OK({
         res,
@@ -182,10 +212,10 @@ module.exports = {
   changePassword: async (req, res) => {
     try {
       const reqBody = req.body;
-      
+
       const user = await UserModel.findOne({ _id: req.user._id });
-      
-      let temp = comparePassword({password:reqBody.oldPassword,hash:user.password})
+
+      let temp = comparePassword({ password: reqBody.oldPassword, hash: user.password })
       if (!temp) {
         return apiResponse.BAD_REQUEST({
           res,
@@ -214,5 +244,5 @@ module.exports = {
     }
   },
 
-  
+
 };

@@ -17,8 +17,7 @@ const userSchema = mongoose.Schema(
     email: {
       type: String,
       trim: true,
-      lowercase: true,
-      
+      lowercase: true,      
     },
     mobileNo: {
       type: String,
@@ -50,6 +49,10 @@ const userSchema = mongoose.Schema(
       type: Date,
       default: null,
     },
+    isDeleted:{
+      type:Boolean,
+      default:false
+    }
   },
   {
     timestamps: true,

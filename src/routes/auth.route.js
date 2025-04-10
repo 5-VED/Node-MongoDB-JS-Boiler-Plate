@@ -12,6 +12,11 @@ const router = express.Router();
 router.post("/login", validate(authValidation.login), authController.userLogin);
 
 /**
+ * Signup
+ */
+router.post("/signup", validate(authValidation.signup), authController.signupUser);
+
+/**
  * Send OTP.
  */
 router.post(
