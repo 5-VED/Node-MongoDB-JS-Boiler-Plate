@@ -1,13 +1,14 @@
-const jwt = require("jsonwebtoken");
 const apiResponse = require('../Utils/api.response');
+const { decodeToken } = require("../Utils/utils");
 const messages = require("../Constants/message");
 const { UserModel } = require("../Models");
+const ROLE = require("../Constants/roles");	
 
 const auth = ({ isTokenRequired = true, usersAllowed = [] }) => {
 	return async (req, res, next) => {
 		try {
 			let token = (req.header('x-auth-token') || req.header('Authorization'))?.replace(/Bearer +/g, '') 
-
+                                                                                                                                                                                                                                                                                                          
 			if (isTokenRequired && !token) {				
                 return apiResponse.BAD_REQUEST({                    
                     res,        
@@ -17,10 +18,10 @@ const auth = ({ isTokenRequired = true, usersAllowed = [] }) => {
 
 			if (!isTokenRequired && !token) return next();
 
-			let decoded = jwt.decode(token);
-			logger.info(`[DECODED] [CONTENT: ${JSON.stringify(decoded)}]`);
+			let decoded = decodeToken({ token });
+			// logger.info(`[DECODED] [CONTENT: ${JSON.stringify(decoded)}]`);
 
-			if (!decoded?.id) {				
+			if (!decoded?._id) {
                 return apiResponse.UNAUTHORIZED({                    
                     res,        
                     message: messages.INVALID_TOKEN
@@ -28,14 +29,13 @@ const auth = ({ isTokenRequired = true, usersAllowed = [] }) => {
 			}
 
 			const user = await UserModel.findOne({
-				where: {
-					id: decoded.id,
-					isActive: true,
-				},
-				include: [{ model: RoleModel, as: 'roleData' }],
-				raw: true,
-				nest: true,
+				_id: decoded._id,
+				isActive: true}).populate({
+				path: 'roleId',
+				select: 'role',
 			});
+				
+
 
 			if (!user) {				
                 return apiResponse.UNAUTHORIZED({                    
@@ -48,11 +48,12 @@ const auth = ({ isTokenRequired = true, usersAllowed = [] }) => {
 				...decoded,
 				// ...user,
 				id: user?.id,
-				role: user?.roleData?.role,
+				role: user?.roleId?.role,
 				email: user?.email,
 			};
 
-			if (req?.user?.role === ROLE.ADMIN || usersAllowed.includes('*')) {
+
+			if (req?.user?.role === ROLE.superAdmin || usersAllowed.includes('*')) {
 				return next();
 			}
 
@@ -63,10 +64,10 @@ const auth = ({ isTokenRequired = true, usersAllowed = [] }) => {
                 message: messages.UNAUTHORIZED
               })											
 		} catch (error) {
-			logger.error(`[AUTH ERROR]: ${error.message}`);						
-            return apiResponse.INTERNAL_SERVER_ERROR({                    
+			// logger.error(`[AUTH ERROR]: ${error.message}`);						
+            return apiResponse.CATCH_ERROR({                    
                 res,        
-                message: message.INTERNAL_SERVER_ERROR,
+                message: messages.INTERNAL_SERVER_ERROR,
                 data: error
               })								
 		}

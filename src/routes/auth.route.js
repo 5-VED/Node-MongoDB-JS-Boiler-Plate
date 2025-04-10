@@ -43,7 +43,7 @@ router.put(
  */
 router.put(
   "/reset-password",
-  auth,
+  auth({isTokenRequired: true, usersAllowed: ["*"]}),
   validate(authValidation.changePassword),
   authController.changePassword
 );

@@ -1,4 +1,4 @@
-const { generateToken } = require("../Utils/utils");
+const { generateToken, comparePassword } = require("../Utils/utils");
 const emailService = require("../Services/email-sending");
 const bcrypt = require("bcryptjs");
 const message = require("../Constants/message")
@@ -39,11 +39,11 @@ module.exports = {
         message: message.USER_LOGIN_SUCCESSFULLY,
         data: {
           user: emailExist,
-          tokens: await generateToken({ user_id: emailExist._id }), // Generate auth token.
+          tokens: await generateToken({ _id: emailExist._id }), // Generate auth token.
         },
       });
     } catch (err) {
-      logger.error("error generating", err);
+      logger.error("error generating", err);      
       return apiResponse.CATCH_ERROR({
         res,
         message: message.INTERNAL_SERVER_ERROR,
@@ -184,8 +184,9 @@ module.exports = {
       const reqBody = req.body;
       
       const user = await UserModel.findOne({ _id: req.user._id });
-
-      if (!bcrypt.compareSync(reqBody.oldPassword, user.password)) {
+      
+      let temp = comparePassword({password:reqBody.oldPassword,hash:user.password})
+      if (!temp) {
         return apiResponse.BAD_REQUEST({
           res,
           message: message.WRONG_PASSWORD,
@@ -195,7 +196,7 @@ module.exports = {
       let password = bcrypt.hashSync(reqBody.newPassword, 8);
 
       await UserModel.findOneAndUpdate(
-        { _id: req.user._id._id, deletedAt: null },
+        { _id: req.user._id, deletedAt: null },
         { $set: { password: password } },
         { new: true }
       );
