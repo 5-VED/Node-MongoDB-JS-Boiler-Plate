@@ -1,8 +1,7 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
+const  {Schema,model} = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const userSchema = mongoose.Schema(
+const userSchema = Schema(
   {
     firstName: {
       type: String,
@@ -30,7 +29,7 @@ const userSchema = mongoose.Schema(
       minlength: 8,     
     },
     roleId: {
-      type: mongoose.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Role",
     },
     isEmailVerified: {
@@ -88,6 +87,6 @@ userSchema.pre("save", async function (next) {
 });
 
 
-const User = mongoose.model("User", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

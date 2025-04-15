@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const {model,Schema} = require("mongoose");
 
-const otpSchema = mongoose.Schema(
+const otpSchema = Schema(
   {
     otp: {
       type: String,
@@ -11,7 +11,7 @@ const otpSchema = mongoose.Schema(
       default: null,
     },
     userId: {
-      type: mongoose.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
@@ -27,5 +27,5 @@ const otpSchema = mongoose.Schema(
   { timestamps: true, versionKey: false }
 );
 
-const Otp = mongoose.model("Otp", otpSchema);
+const Otp = model("Otp", otpSchema);
 module.exports = Otp;
