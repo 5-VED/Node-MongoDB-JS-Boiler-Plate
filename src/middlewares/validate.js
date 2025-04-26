@@ -4,7 +4,7 @@ const apiResponse = require("../Utils/api.response");
 
 const errors = {
   labels: true,
-};
+w};
 
 const validate = (schema) => (req, res, next) => {
   const validSchema = pick(schema, ["params", "query", "body"]);
